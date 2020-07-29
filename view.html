@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+    <head>
+        <script src="lib/MV.js"></script>
+        <script src='./view.js'></script>
+        <script id="vertexShader" type="x-shader/x-vertex">
+            attribute vec4 vPosition; 
+            attribute vec4 vColor; 
+            varying vec4 fColor; 
+            void main() { 
+                gl_Position = vPosition; // Point position 
+                gl_PointSize = 10.0; // Point size 
+                fColor = vColor; // Pass point color to fragment shader 
+            } 
+        </script>
+        <script id="fragmentShader" type="x-shader/x-fragment">
+            precision mediump float; 
+            varying vec4 fColor; 
+            void main() { 
+                gl_FragColor = fColor; // Point color 
+            } 
+        </script>
+    </head>
+    <body onload="main()">
+        <canvas id="canvas" width=400 height=400></canvas>
+    </body>
+</html>
